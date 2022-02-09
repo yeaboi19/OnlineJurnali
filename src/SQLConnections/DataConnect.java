@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataConnect {
-    private Connection con;
+    private static Connection con;
     private static final DataConnect instance = new DataConnect();
 
     private DataConnect() {
@@ -21,7 +21,7 @@ public class DataConnect {
         return instance;
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return con;
     }
 
