@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="376.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.MenuFxmlController">
+   <children>
+      <ButtonBar layoutX="200.0" layoutY="131.0" prefHeight="40.0" prefWidth="200.0" />
+      <ButtonBar layoutX="200.0" layoutY="208.0" prefHeight="40.0" prefWidth="200.0" />
+      <Button layoutX="204.0" layoutY="184.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="191.0" text="Teacher" onAction="#onTeacherPressed">
+         <font>
+            <Font name="Fira Code Retina" size="23.0" />
+         </font></Button>
+      <Button layoutX="205.0" layoutY="119.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="191.0" text="Student" onAction="#onStudentPressed">
+         <font>
+            <Font name="Fira Code Retina" size="23.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
