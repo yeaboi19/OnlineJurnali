@@ -26,7 +26,7 @@ public class Startup {
             System.out.println("DEBUG: created Table 'GRADES'");
         }
         if (!tableCheck("user")) {
-            p = con.prepareStatement("CREATE TABLE `skola`.`user` (`UserID` INT NOT NULL,`Name` VARCHAR(45) NOT NULL,`Lastname` VARCHAR(45) NOT NULL,`Email` VARCHAR(45) NOT NULL,`Class` VARCHAR(45) NOT NULL,`Subject` VARCHAR(45) NOT NULL,`isStudent` BOOLEAN NOT NULL,PRIMARY KEY (`UserID`));");
+            p = con.prepareStatement("CREATE TABLE `skola`.`user` (`UserID` INT NOT NULL,`Name` VARCHAR(45) NOT NULL,`Lastname` VARCHAR(45) NOT NULL,`Email` VARCHAR(45) NOT NULL,`Class` VARCHAR(45) NOT NULL,`Subject` VARCHAR(45) NOT NULL,`isStudent` BOOLEAN NOT NULL,`isMale` BOOLEAN NOT NULL,PRIMARY KEY (`UserID`));");
             p.execute();
             System.out.println("DEBUG: created Table 'USER'");
         }
