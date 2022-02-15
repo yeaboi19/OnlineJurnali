@@ -40,5 +40,21 @@
             <Font name="Calibri" size="15.0" />
          </font>
       </CheckBox>
+      <Button layoutX="440.0" layoutY="349.0" mnemonicParsing="false" onAction="#onClosePressed" text="Close">
+         <font>
+            <Font name="Calibri" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="71.0" layoutY="297.0" prefHeight="21.0" prefWidth="149.0" text="Grade">
+         <font>
+            <Font name="Berlin Sans FB" size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="71.0" layoutY="323.0" prefHeight="25.0" prefWidth="72.0" text="11a" />
+      <Button layoutX="349.0" layoutY="349.0" mnemonicParsing="false" text="Register">
+         <font>
+            <Font name="Calibri" size="15.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

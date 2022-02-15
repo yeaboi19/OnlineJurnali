@@ -1,43 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.MenuFxmlController">
-    <header>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="209.0" prefWidth="597.0">
-         <children>
-            <ButtonBar layoutX="221.0" layoutY="189.0" prefHeight="40.0" prefWidth="200.0" />
-            <AnchorPane layoutX="1.0" layoutY="79.0" minHeight="0.0" minWidth="0.0" prefHeight="213.0" prefWidth="396.0">
-               <children>
-                <Button id="register" layoutX="195.0" layoutY="94.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="68.0" prefWidth="260.0" text="Register" textFill="#1f2ac2" onAction="#onRegisterPressed">
-                     <font>
-                        <Font name="Wingdings 2" size="22.0" />
-                     </font>
-                  </Button>
-                  <ButtonBar layoutX="183.0" layoutY="168.0" prefHeight="65.0" prefWidth="272.0">
-                     <buttons>
-                        <Button id="login" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="65.0" prefWidth="260.0" text="Login" textFill="#1d23be" onAction="#onLoginPressed">
-                           <font>
-                              <Font name="Wingdings 3" size="22.0" />
-                           </font>
-                        </Button>
-                     </buttons>
-                  </ButtonBar>
-               </children>
-            </AnchorPane>
-            <Label layoutX="7.0" layoutY="14.0" prefHeight="85.0" prefWidth="627.0" text="ONLINE SCHOOLBOOK MENU" textFill="#34b9cf">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.MenuFxmlController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Button layoutX="538.0" layoutY="334.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="81.0" text="Close" onAction="#onClosePressed">
                <font>
-                  <Font size="46.0" />
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Button>
+            <Button id="register" layoutX="254.0" layoutY="141.0" mnemonicParsing="false" text="Register" onAction="#onRegisterPressed">
+               <font>
+                  <Font name="Calibri" size="23.0" />
+               </font>
+            </Button>
+            <Button id="login" layoutX="253.0" layoutY="217.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="107.0" text="Login" onAction="#onLoginPressed">
+               <font>
+                  <Font name="Calibri" size="23.0" />
+               </font>
+            </Button>
+            <Label layoutX="69.0" layoutY="28.0" prefHeight="43.0" prefWidth="510.0" text="Local School Ebook" textAlignment="JUSTIFY" textFill="#2f359d">
+               <font>
+                  <Font name="Century" size="57.0" />
                </font>
             </Label>
-         </children></AnchorPane>
-    </header>
-    <expandableContent>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-    </expandableContent>
-</DialogPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
