@@ -1,5 +1,6 @@
 package JavaFx;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+// FIXME: 2/15/2022
 
 public class MenuFxmlController implements Initializable {
     @FXML
@@ -27,8 +29,9 @@ public class MenuFxmlController implements Initializable {
 
     @FXML
     public void onRegisterPressed() throws IOException {
+
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("src/main/resources/studentOrTeacher.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/studentOrTeacher.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -44,7 +47,7 @@ public class MenuFxmlController implements Initializable {
     @FXML
     public void onStudentPressed() throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("src/main/resources/registerStudent.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/registerStudent.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -60,7 +63,7 @@ public class MenuFxmlController implements Initializable {
     @FXML
     public void onTeacherPressed() throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("src/main/resources/register.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/register.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -88,5 +91,9 @@ public class MenuFxmlController implements Initializable {
         catch (IOException e){
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void onClosePressed(){
+        Platform.exit();
     }
 }
