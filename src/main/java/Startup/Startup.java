@@ -17,25 +17,28 @@ public class Startup {
         return res.next();
     }
 
-    public Startup() throws SQLException {
-        PreparedStatement p = con.prepareStatement("use skola");
-        p.execute();
-        if (!tableCheck("grades")) {
-            p = con.prepareStatement("CREATE TABLE `skola`.`grades` (`UserID` INT NOT NULL,`Georgian` VARCHAR(45) NULL,`History` VARCHAR(45) NULL,`Math` VARCHAR(45) NULL,`Physics` VARCHAR(45) NULL,`Biology` VARCHAR(45) NULL,`Chemistry` VARCHAR(45) NULL,`Geography` VARCHAR(45) NULL,`English` VARCHAR(45) NULL,`Russian` VARCHAR(45) NULL,PRIMARY KEY (`UserID`));");
+    public Startup() {
+        try {
+            PreparedStatement p = con.prepareStatement("use skola");
             p.execute();
-            System.out.println("DEBUG: created Table 'GRADES'");
+            if (!tableCheck("grades")) {
+                p = con.prepareStatement("CREATE TABLE `skola`.`grades` (`UserID` INT NOT NULL,`Georgian` VARCHAR(45) NULL,`History` VARCHAR(45) NULL,`Math` VARCHAR(45) NULL,`Physics` VARCHAR(45) NULL,`Biology` VARCHAR(45) NULL,`Chemistry` VARCHAR(45) NULL,`Geography` VARCHAR(45) NULL,`English` VARCHAR(45) NULL,`Russian` VARCHAR(45) NULL,PRIMARY KEY (`UserID`));");
+                p.execute();
+                System.out.println("DEBUG: created Table 'GRADES'");
+            }
+            if (!tableCheck("user")) {
+                p = con.prepareStatement("CREATE TABLE `skola`.`user` (`UserID` INT NOT NULL AUTO_INCREMENT,`Name` VARCHAR(45) NOT NULL,`Lastname` VARCHAR(45) NOT NULL,`Email` VARCHAR(45) NOT NULL,`Class` VARCHAR(45) NOT NULL,`Subject` VARCHAR(45) NOT NULL,`isStudent` BOOLEAN NOT NULL,`isMale` BOOLEAN NOT NULL,PRIMARY KEY (`UserID`));");
+                p.execute();
+                System.out.println("DEBUG: created Table 'USER'");
+            }
+            if (!tableCheck("class")) {
+                p = con.prepareStatement("CREATE TABLE `skola`.`class` (`ClassId` INT NOT NULL AUTO_INCREMENT,`ClassUserId` INT NOT NULL,`ClassTeachId` INT NOT NULL,`ClassGrade` INT NOT NULL,PRIMARY KEY (`ClassId`));");
+                p.execute();
+                System.out.println("DEBUG: created Table 'CLASS'");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        if (!tableCheck("user")) {
-            p = con.prepareStatement("CREATE TABLE `skola`.`user` (`UserID` INT NOT NULL,`Name` VARCHAR(45) NOT NULL,`Lastname` VARCHAR(45) NOT NULL,`Email` VARCHAR(45) NOT NULL,`Class` VARCHAR(45) NOT NULL,`Subject` VARCHAR(45) NOT NULL,`isStudent` BOOLEAN NOT NULL,`isMale` BOOLEAN NOT NULL,PRIMARY KEY (`UserID`));");
-            p.execute();
-            System.out.println("DEBUG: created Table 'USER'");
-        }
-        if (!tableCheck("class")) {
-            p = con.prepareStatement("CREATE TABLE `skola`.`class` (`ClassId` INT NOT NULL AUTO_INCREMENT,`ClassUserId` INT NOT NULL,`ClassTeachId` INT NOT NULL,`ClassGrade` INT NOT NULL,PRIMARY KEY (`ClassId`));");
-            p.execute();
-            System.out.println("DEBUG: created Table 'CLASS'");
-        }
-
     }
 
 

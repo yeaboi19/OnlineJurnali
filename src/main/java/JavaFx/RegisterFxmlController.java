@@ -32,10 +32,7 @@ public class RegisterFxmlController {
 
     @FXML
     public void registerTeacher() throws SQLException {
-        Boolean isMale = false;
-        if (maleid.isSelected()) {
-            isMale = true;
-        }
-        Entry.register(nameid.getText(), surnameid.getText(), emailid.getText(), classid.getText(), String.valueOf(subjectid.getSelectionModel().getSelectedItem()), false, isMale);
+        Entry.register(nameid.getText(), surnameid.getText(), emailid.getText(), classid.getText(), String.valueOf(subjectid.getSelectionModel().getSelectedItem()), false, maleid.isSelected());
+        System.out.println("DEBUG: ADDED user- "+nameid.getText()+" email- "+emailid.getText());
     }
 }
