@@ -4,7 +4,6 @@ import SQLConnections.DataConnect;
 import UserType.User;
 
 import java.sql.*;
-import java.util.HashMap;
 
 public class Entry {
     // FIXME: 2/15/2022
@@ -19,8 +18,9 @@ public class Entry {
         }
         ResultSet set = null;
         try {
-            set = statement.executeQuery("select * from skola.user where Email = " + email + ";");
+            set = statement.executeQuery("select * from user where Email = \"%s\"".formatted(email));
         } catch (SQLException e) {
+            e.printStackTrace();
             System.out.println("DEBUG: doesExist returned FALSE");
             return false;
         }
@@ -55,14 +55,15 @@ public class Entry {
     }
 
     public static User login(String name, String surname, String email) {
-        if (doesExist(name,surname,email)){
+        if (doesExist(email,name,surname)){
             return new User(name,surname,email);
         }
+
         return new User();
     }
 
     public User getUser(String name,String surname,String email){
-        if(doesExist(name,surname,email))return null;
+        if(!doesExist(email,name,surname))return null;
         Connection con = DataConnect.getConnection();
         try {
             PreparedStatement p = con.prepareStatement("select * from skola.user WHERE Name=\""+name+"\" AND Lastname=\""+surname+"\" AND Email=\""+email+"\";");
