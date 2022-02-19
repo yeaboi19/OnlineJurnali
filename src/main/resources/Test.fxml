@@ -4,13 +4,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.TestFxmlController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.TestFxmlController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="118.0" prefWidth="600.0">
                <children>
-                  <Label fx:id="nameLabel" text="Label">
+                  <Label fx:id="nameLabel" prefHeight="17.0" prefWidth="138.0" text="Label">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
@@ -21,7 +21,7 @@
                </VBox.margin></HBox>
             <HBox prefHeight="126.0" prefWidth="600.0">
                <children>
-                  <Label fx:id="surnameLabel" text="Label">
+                  <Label fx:id="surnameLabel" prefHeight="17.0" prefWidth="150.0" text="Label">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>
@@ -32,7 +32,7 @@
                </VBox.margin></HBox>
             <HBox prefHeight="126.0" prefWidth="600.0">
                <children>
-                  <Label fx:id="emailLabel" text="Label">
+                  <Label fx:id="emailLabel" prefHeight="17.0" prefWidth="144.0" text="Label">
                      <HBox.margin>
                         <Insets top="8.0" />
                      </HBox.margin>

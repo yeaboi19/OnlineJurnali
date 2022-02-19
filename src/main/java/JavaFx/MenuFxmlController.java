@@ -21,7 +21,7 @@ public class MenuFxmlController implements Initializable {
     Button login;
     @FXML
     Button register;
-
+    private Stage primaryStage;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -29,7 +29,6 @@ public class MenuFxmlController implements Initializable {
 
     @FXML
     public void onRegisterPressed() throws IOException {
-
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/studentOrTeacher.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -39,11 +38,11 @@ public class MenuFxmlController implements Initializable {
             stage.setTitle("ABC");
             stage.setScene(new Scene(root1));
             stage.show();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void onStudentPressed() throws IOException {
         try {
@@ -55,11 +54,11 @@ public class MenuFxmlController implements Initializable {
             stage.setTitle("ABC");
             stage.setScene(new Scene(root1));
             stage.show();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void onTeacherPressed() throws IOException {
         try {
@@ -71,11 +70,11 @@ public class MenuFxmlController implements Initializable {
             stage.setTitle("ABC");
             stage.setScene(new Scene(root1));
             stage.show();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void onLoginPressed() {
         try {
@@ -87,13 +86,15 @@ public class MenuFxmlController implements Initializable {
             stage.setTitle("ABC");
             stage.setScene(new Scene(root1));
             stage.show();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+
     @FXML
-    public void onClosePressed(){
+    public void onClosePressed() {
         Platform.exit();
     }
 }

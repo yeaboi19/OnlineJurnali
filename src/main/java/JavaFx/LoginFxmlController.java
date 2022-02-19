@@ -32,8 +32,10 @@ public class LoginFxmlController {
 
     @FXML
     public void onLoginPressed() {
-        Entry.login(nameid.getText(), surnameid.getText(), emailid.getText());// es abrunebs users
-        //da minda ro eg user gadavides /TestFxmlController -shi
+        User user = Entry.login(nameid.getText(), surnameid.getText(), emailid.getText());
+        TestFxmlController fxmlController = new TestFxmlController();
+        fxmlController.user = user;
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/test.fxml"));
             Parent root1 = null;
