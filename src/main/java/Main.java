@@ -1,3 +1,4 @@
+import Registration.Entry;
 import Startup.Startup;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.stage.StageStyle;
 public class Main extends Application {
     public static void main(String[] args) {
         Startup startup = new Startup();
+        Entry e = new Entry();
+        e.getUser("Name","Surname","eemail.com");
         launch(args);
     }
 
@@ -19,7 +22,7 @@ public class Main extends Application {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("ABC");
         stage.setScene(new Scene(root1));
         stage.show();

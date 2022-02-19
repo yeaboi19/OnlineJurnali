@@ -79,11 +79,11 @@ public class MenuFxmlController implements Initializable {
     @FXML
     public void onLoginPressed() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(""));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
+//            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("ABC");
             stage.setScene(new Scene(root1));
             stage.show();

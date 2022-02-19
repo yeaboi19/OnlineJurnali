@@ -1,8 +1,10 @@
 package Registration;
 
 import SQLConnections.DataConnect;
+import UserType.User;
 
 import java.sql.*;
+import java.util.HashMap;
 
 public class Entry {
     // FIXME: 2/15/2022
@@ -23,7 +25,6 @@ public class Entry {
             return false;
         }
         try {
-
             if (set.next()) {
                 return set.getString("Name").equalsIgnoreCase(name) && set.getString("Lastname").equalsIgnoreCase(surname);
             }
@@ -53,11 +54,36 @@ public class Entry {
         return true;
     }
 
-    public static boolean login(String name, String surname, String email) {
+    public static User login(String name, String surname, String email) {
         if (doesExist(name,surname,email)){
-            // dont have time will doit later
-            //fuck intelij ram consumption
+            return new User(name,surname,email);
         }
-        return false;
+        return new User();
     }
+
+    public User getUser(String name,String surname,String email){
+        if(doesExist(name,surname,email))return null;
+        Connection con = DataConnect.getConnection();
+        try {
+            PreparedStatement p = con.prepareStatement("select * from skola.user WHERE Name=\""+name+"\" AND Lastname=\""+surname+"\" AND Email=\""+email+"\";");
+            ResultSet res = p.executeQuery();
+            ResultSetMetaData rsmd = res.getMetaData();
+
+            res.next();
+            String idRet=res.getString(1);
+            String nameRet=res.getString(2);
+            String lastNameRet=res.getString(3);
+            String emailRet=res.getString(4);
+            String classRet=res.getString(5);
+            String subjectRet=res.getString(6);
+            boolean isStudentRet=res.getBoolean(7);
+            boolean isMaleRet=res.getBoolean(8);
+            User ret = new User(idRet,nameRet,lastNameRet,emailRet,classRet,subjectRet,isStudentRet,isMaleRet);
+            return ret;
+        } catch (SQLException e) {
+            System.out.println("ERROR: AT \"getUser\" PreparedStatement");
+        }
+        return null;
+    }
+
 }
