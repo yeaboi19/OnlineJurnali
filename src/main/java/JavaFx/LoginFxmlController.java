@@ -33,11 +33,13 @@ public class LoginFxmlController {
     @FXML
     public void onLoginPressed() {
         User user = Entry.login(nameid.getText(), surnameid.getText(), emailid.getText());
-        TestFxmlController fxmlController = new TestFxmlController();
-        fxmlController.user = user;
 
+        FXMLLoader fxmlLoader = null;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/test.fxml"));
+            if (user.isStudent()) {
+                LoginSceneStudentController.user = user;
+                fxmlLoader = new FXMLLoader(getClass().getResource("/loginSceneStudent.fxml"));
+            }
             Parent root1 = null;
             root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();

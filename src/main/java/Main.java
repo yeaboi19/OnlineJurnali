@@ -13,10 +13,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public static void main(String[] args) {
-        Startup startup = new Startup();
+        new Startup(); //added a new column so delete grades table and relaunch. thx
         Entry e = new Entry();
 
         launch(args);
+
     }
 
     @Override

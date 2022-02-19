@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="442.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginSceneStudentController">
+   <children>
+      <Label fx:id="welcomeLabel" layoutX="157.0" layoutY="14.0" prefHeight="46.0" prefWidth="556.0" text="Welcome back name username" textFill="#51bd64">
+         <font>
+            <Font name="Calibri Italic" size="26.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableGrade" layoutX="14.0" layoutY="196.0" prefHeight="114.0" prefWidth="656.0" />
+       <ChoiceBox id="subject" fx:id="subjectid" layoutX="14.0" layoutY="60.0" prefHeight="25.0" prefWidth="149.0" value="Subject">
+           <items>
+               <FXCollections fx:factory="observableArrayList">
+                   <String fx:value="Georgian" />
+                   <String fx:value="History" />
+                   <String fx:value="Math" />
+                   <String fx:value="Physics" />
+                   <String fx:value="Biology" />
+                   <String fx:value="Chemistry" />
+                   <String fx:value="Geography" />
+                   <String fx:value="English" />
+                   <String fx:value="Russian" />
+               </FXCollections>
+           </items>
+       </ChoiceBox>
+      <Button fx:id="close" layoutX="584.0" layoutY="400.0" mnemonicParsing="false" onAction="#onClosePressed" prefHeight="25.0" prefWidth="85.0" text="Close">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
