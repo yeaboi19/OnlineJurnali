@@ -1,12 +1,12 @@
 package JavaFx;
 
-import Registration.Entry;
 import UserType.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,20 +22,29 @@ public class LoginFxmlController {
     public TextField surnameid;
     @FXML
     public TextField emailid;
+    @FXML
+    public Button back;
 
     @FXML
     public void onClosePressed() {
-        Platform.exit();
+        try {
+            Stage stage = (Stage) back.getScene().getWindow();
+            Parent parent = FXMLLoader.load(getClass().getResource("/menu.fxml"));
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 
 
     @FXML
     public void onLoginPressed() {
-        User user = Entry.login(nameid.getText(), surnameid.getText(), emailid.getText());
-
-        FXMLLoader fxmlLoader = null;
         try {
+            User user = new User(nameid.getText(), surnameid.getText(), emailid.getText());
+
+            FXMLLoader fxmlLoader = null;
             if (user.isStudent()) {
                 LoginSceneStudentController.user = user;
                 fxmlLoader = new FXMLLoader(getClass().getResource("/loginSceneStudent.fxml"));
@@ -44,7 +53,6 @@ public class LoginFxmlController {
             root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("ABC");
             stage.setScene(new Scene(root1));
             stage.show();
@@ -52,6 +60,7 @@ public class LoginFxmlController {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void onEmailPressed() {
         onLoginPressed();

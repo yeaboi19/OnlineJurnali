@@ -1,4 +1,3 @@
-import Registration.Entry;
 import Startup.Startup;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,11 +10,14 @@ import javafx.stage.Stage;
 //TODO:override scene I REALLY HAVE NO IDEA
 //TODO:login info DONE
 
+//     overrides work now
+//     made DAO classes to sort and make easy changes to the code
+//TODO:while on login scene inputting wrong login credential will get errors
+//TODO:finish loginTeacher.fxml
+
 public class Main extends Application {
     public static void main(String[] args) {
-        new Startup(); //added a new column so delete grades table and relaunch. thx
-        Entry e = new Entry();
-
+        new Startup();
         launch(args);
 
     }
@@ -27,7 +29,6 @@ public class Main extends Application {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-//        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("ABC");
         stage.setScene(new Scene(root1));
         stage.show();

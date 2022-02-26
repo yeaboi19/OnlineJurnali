@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="442.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginSceneStudentController">
+<AnchorPane prefHeight="442.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginSceneStudentController">
    <children>
       <Label fx:id="welcomeLabel" layoutX="157.0" layoutY="14.0" prefHeight="46.0" prefWidth="556.0" text="Welcome back name username" textFill="#51bd64">
          <font>
@@ -29,7 +29,7 @@
                </FXCollections>
            </items>
        </ChoiceBox>
-      <Button fx:id="close" layoutX="584.0" layoutY="400.0" mnemonicParsing="false" onAction="#onClosePressed" prefHeight="25.0" prefWidth="85.0" text="Close">
+      <Button fx:id="back" layoutX="584.0" layoutY="400.0" mnemonicParsing="false" onAction="#onClosePressed" prefHeight="25.0" prefWidth="85.0" text="Close">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font></Button>

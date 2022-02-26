@@ -1,18 +1,20 @@
 package JavaFx;
 
-import Registration.GradesInfo;
+import UserType.GradesInfo;
 import SQLConnections.DataConnect;
 import UserType.User;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,6 +33,8 @@ public class LoginSceneStudentController implements Initializable {
     private TableView tableGrade;
     @FXML
     private ChoiceBox subjectid;
+    @FXML
+    private Button back;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +73,7 @@ public class LoginSceneStudentController implements Initializable {
         List<GradesInfo> gradesInfo = new ArrayList<>();
         GradesInfo temp = null;
         while (set.next()) {
-            temp = new GradesInfo(set.getInt("Georgian"), set.getInt("History"), set.getInt("Math"), set.getInt("Physics"), set.getInt("Biology"), set.getInt("Chemistry"), set.getInt("Geography"), set.getInt("English"), set.getInt("Russian"), set.getString("Date"));
+            temp = new GradesInfo(user.getId(),set.getInt("Georgian"), set.getInt("History"), set.getInt("Math"), set.getInt("Physics"), set.getInt("Biology"), set.getInt("Chemistry"), set.getInt("Geography"), set.getInt("English"), set.getInt("Russian"), set.getString("Date"));
             gradesInfo.add(temp);
         }
         return gradesInfo;
@@ -77,11 +81,20 @@ public class LoginSceneStudentController implements Initializable {
 
     @FXML
     public void onClosePressed() {
-        Platform.exit();
+        try {
+            Stage stage = (Stage) back.getScene().getWindow();
+            Parent parent = FXMLLoader.load(getClass().getResource("/login.fxml"));
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
   /*onChoiceBoxSelect (just my note for me)
           get choice
           loop through gradesInfo add a column with date and under that column add a grade. should be easy
+          nigger
    */
 
 }

@@ -1,6 +1,7 @@
-package Registration;
+package UserType;
 
 public class GradesInfo {
+    private int userId;
     private int georgian;
     private int history;
     private int math;
@@ -12,6 +13,13 @@ public class GradesInfo {
     private int russian;
     private String date;
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getGeorgian() {
         return georgian;
@@ -96,6 +104,7 @@ public class GradesInfo {
     @Override
     public String toString() {
         return "GradesInfo{" +
+                "userId=" + userId +
                 ", georgian=" + georgian +
                 ", history=" + history +
                 ", math=" + math +
@@ -109,7 +118,8 @@ public class GradesInfo {
                 '}';
     }
 
-    public GradesInfo(int georgian, int history, int math, int physics, int biology, int chemistry, int geography, int english, int russian, String date) {
+    public GradesInfo(int userId, int georgian, int history, int math, int physics, int biology, int chemistry, int geography, int english, int russian, String date) {
+        this.userId = userId;
         this.georgian = georgian;
         this.history = history;
         this.math = math;
@@ -121,25 +131,18 @@ public class GradesInfo {
         this.russian = russian;
         this.date = date;
     }
+
     public int getSubject(String subject){
-        switch(subject){
-            case"Georgian":
-                return georgian;
-            case"History":
-                return history;
-            case"Math":
-                return math;
-            case"Physics":
-                return physics;
-            case"Biology":
-                return biology;
-            case"Chemistry":
-                return chemistry;
-            case"English":
-                return english;
-            case"Russian":
-                return russian;
-        }
-        return 0;
+        return switch (subject) {
+            case "Georgian" -> georgian;
+            case "History" -> history;
+            case "Math" -> math;
+            case "Physics" -> physics;
+            case "Biology" -> biology;
+            case "Chemistry" -> chemistry;
+            case "English" -> english;
+            case "Russian" -> russian;
+            default -> 0;
+        };
     }
 }

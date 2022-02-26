@@ -21,22 +21,27 @@ public class MenuFxmlController implements Initializable {
     Button login;
     @FXML
     Button register;
-    private Stage primaryStage;
+    @FXML
+    Button student;
+    @FXML
+    Button teacher;
+    @FXML
+    Button back;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // sugma kok?
+        // kok sugma?
     }
 
     @FXML
     public void onRegisterPressed() throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/studentOrTeacher.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("ABC");
-            stage.setScene(new Scene(root1));
+            Stage stage = (Stage) register.getScene().getWindow();
+            Parent parent = FXMLLoader.load(getClass().getResource("/studentOrTeacher.fxml"));
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,13 +51,10 @@ public class MenuFxmlController implements Initializable {
     @FXML
     public void onStudentPressed() throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/registerStudent.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("ABC");
-            stage.setScene(new Scene(root1));
+            Stage stage = (Stage) student.getScene().getWindow();
+            Parent parent = FXMLLoader.load(getClass().getResource("/registerStudent.fxml"));
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,13 +64,10 @@ public class MenuFxmlController implements Initializable {
     @FXML
     public void onTeacherPressed() throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/register.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("ABC");
-            stage.setScene(new Scene(root1));
+            Stage stage = (Stage) teacher.getScene().getWindow();
+            Parent parent = FXMLLoader.load(getClass().getResource("/register.fxml"));
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -77,20 +76,18 @@ public class MenuFxmlController implements Initializable {
 
     @FXML
     public void onLoginPressed() {
+        Stage stage;
+        Parent parent;
+        stage = (Stage) login.getScene().getWindow();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-//            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("ABC");
-            stage.setScene(new Scene(root1));
+            parent = FXMLLoader.load(getClass().getResource("/login.fxml"));
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 
     @FXML

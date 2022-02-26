@@ -75,7 +75,7 @@
                         </HBox>
                         <HBox>
                             <children>
-                                <Button fx:id="close" mnemonicParsing="false" onAction="#onClosePressed" text="Close">
+                                <Button fx:id="back" mnemonicParsing="false" onAction="#onClosePressed" text="Back">
                                     <font>
                                         <Font name="Calibri" size="15.0" />
                                     </font>

@@ -1,9 +1,11 @@
 package UserType;
 
-import Registration.Entry;
+import SQL_DAO.UserDAO;
+
+import java.util.Objects;
 
 public class User {
-    private String id;
+    private int id;
     private String name;
     private String lastName;
     private String email;
@@ -15,7 +17,7 @@ public class User {
     public User(){}
 
     public User(String name, String lastName, String email) {
-        User user = new Entry().getUser(name,lastName,email);
+        User user = UserDAO.get(name,lastName,email);
         this.id = user.getId();
         this.name = user.getName();
         this.lastName = user.getLastName();
@@ -26,7 +28,7 @@ public class User {
         this.isMale = user.isMale();
     }
 
-    public User(String id, String name, String lastName, String email, String class1, String subject, boolean isStudent, boolean isMale) {
+    public User(int id, String name, String lastName, String email, String class1, String subject, boolean isStudent, boolean isMale) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -38,7 +40,7 @@ public class User {
     }
 
     public void fillNull(){
-        this.id = null;
+        this.id = 0;
         this.name = null;
         this.lastName = null;
         this.email = null;
@@ -49,14 +51,14 @@ public class User {
     }
 
     public boolean isNull(){
-        return id==null;
+        return id==0;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -121,7 +123,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return isStudent == user.isStudent && isMale == user.isMale && id.equals(user.id) && name.equals(user.name) && lastName.equals(user.lastName) && email.equals(user.email) && class1.equals(user.class1) && subject.equals(user.subject);
+        return id == user.id && isStudent == user.isStudent && isMale == user.isMale && Objects.equals(name, user.name) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(class1, user.class1) && Objects.equals(subject, user.subject);
     }
 
     @Override
@@ -132,7 +134,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

@@ -1,4 +1,4 @@
-package Registration;
+package UserType;
 
 public class GradesInfoLite {
     private static String subject;

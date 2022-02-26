@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="413.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.RegisterFxmlController">
+<AnchorPane prefHeight="413.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.RegisterFxmlController">
     <children>
         <TextField id="nameidd" fx:id="nameid" layoutX="71.0" layoutY="109.0" />
         <Label layoutX="71.0" layoutY="79.0" prefHeight="17.0" prefWidth="167.0" text="Name">
@@ -63,7 +63,7 @@
             </font>
         </Label>
         <TextField id="classId" fx:id="classid" layoutX="70.0" layoutY="315.0" prefHeight="25.0" prefWidth="198.0" />
-      <Button layoutX="487.0" layoutY="374.0" mnemonicParsing="false" onAction="#onClosePressed" prefHeight="25.0" prefWidth="57.0" text="Close">
+      <Button fx:id="back" layoutX="487.0" layoutY="374.0" mnemonicParsing="false" onAction="#onClosePressed" prefHeight="25.0" prefWidth="57.0" text="Close">
          <font>
             <Font name="Calibri" size="15.0" />
          </font>
