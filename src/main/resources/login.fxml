@@ -1,96 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="274.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginFxmlController">
-    <children>
-        <VBox layoutX="114.0" layoutY="43.0" prefHeight="274.0" prefWidth="373.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <HBox prefHeight="362.0" prefWidth="600.0">
-                    <children>
-                        <VBox prefHeight="305.0" prefWidth="244.0">
-                            <children>
-                                <Label text="Name">
-                                    <font>
-                                        <Font name="Berlin Sans FB" size="19.0" />
-                                    </font>
-                                </Label>
-                                <TextField id="nameidd" fx:id="nameid" text="name" />
-                            </children>
-                            <HBox.margin>
-                                <Insets left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </VBox>
-                        <VBox prefHeight="305.0" prefWidth="292.0">
-                            <children>
-                                <Label text="Surname">
-                                    <font>
-                                        <Font name="Berlin Sans FB" size="19.0" />
-                                    </font>
-                                </Label>
-                                <TextField id="surname" fx:id="surnameid" text="surname">
-                                    <VBox.margin>
-                                        <Insets />
-                                    </VBox.margin>
-                                </TextField>
-                            </children>
-                            <HBox.margin>
-                                <Insets left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </VBox>
-                        <VBox prefHeight="305.0" prefWidth="338.0">
-                            <children>
-                                <Label text="Email">
-                                    <font>
-                                        <Font name="Berlin Sans FB" size="19.0" />
-                                    </font>
-                                </Label>
-                                <TextField id="email" fx:id="emailid" onAction="#onEmailPressed" text="email" />
-                            </children>
-                            <HBox.margin>
-                                <Insets left="15.0" right="15.0" top="15.0" />
-                            </HBox.margin>
-                        </VBox>
-                    </children>
-                </HBox>
-                <HBox prefHeight="51.0" prefWidth="600.0">
-                    <children>
-                        <HBox prefHeight="43.0" prefWidth="58.0">
-                            <children>
-                                <Button fx:id="login" mnemonicParsing="false" onAction="#onLoginPressed" text="Login">
-                                    <font>
-                                        <Font name="Calibri" size="15.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets bottom="5.0" right="5.0" top="5.0" />
-                                    </HBox.margin>
-                                </Button>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="5.0" left="15.0" right="10.0" top="5.0" />
-                            </HBox.margin>
-                        </HBox>
-                        <HBox>
-                            <children>
-                                <Button fx:id="back" mnemonicParsing="false" onAction="#onClosePressed" text="Back">
-                                    <font>
-                                        <Font name="Calibri" size="15.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets bottom="5.0" right="5.0" top="5.0" />
-                                    </HBox.margin>
-                                </Button>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="10.0" left="15.0" right="10.0" top="5.0" />
-                            </HBox.margin>
-                        </HBox>
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
-    </children>
+<AnchorPane fx:id="login" prefHeight="237.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginFxmlController">
+   <children>
+      <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#onLoginPressed" text="Login">
+         <font>
+            <Font name="Calibri" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="back" layoutX="87.0" layoutY="197.0" mnemonicParsing="false" onAction="#onClosePressed" text="Back">
+         <font>
+            <Font name="Calibri" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="3.0" layoutY="73.0" text="Name">
+         <font>
+            <Font name="Calibri Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="73.0" text="Surname">
+         <font>
+            <Font name="Calibri Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="296.0" layoutY="73.0" text="Email">
+         <font>
+            <Font name="Calibri Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameid" layoutX="3.0" layoutY="99.0" prefHeight="25.0" prefWidth="104.0" />
+      <TextField fx:id="surnameid" layoutX="139.0" layoutY="99.0" prefHeight="25.0" prefWidth="130.0" />
+      <TextField fx:id="emailid" layoutX="296.0" layoutY="99.0" />
+      <Label fx:id="errorlable" layoutX="139.0" layoutY="138.0" prefHeight="36.0" prefWidth="158.0" text="Couldn't find the user" textAlignment="CENTER" textFill="RED" visible="false">
+         <font>
+            <Font name="Calibri" size="16.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

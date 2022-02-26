@@ -142,7 +142,7 @@ public class GradesInfo {
             case "Chemistry" -> chemistry;
             case "English" -> english;
             case "Russian" -> russian;
-            default -> 0;
+            default -> -1;
         };
     }
 }

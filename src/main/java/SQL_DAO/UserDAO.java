@@ -45,7 +45,9 @@ public class UserDAO {
         try {
             PreparedStatement ps = con.prepareStatement("select * from skola.user WHERE Name=\""+name+"\" AND Lastname=\""+surname+"\" AND Email=\""+email+"\";");
             ResultSet rs = ps.executeQuery();
-            rs.next();
+            if (!rs.next()){
+                return null;
+            }
             int idRet=rs.getInt(1);
             String nameRet=rs.getString(2);
             String lastNameRet=rs.getString(3);

@@ -5,16 +5,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-//TODO:go back button REQUIRES OVERRIDE SCENE
-//TODO:student register DONE
-//TODO:override scene I REALLY HAVE NO IDEA
-//TODO:login info DONE
-
-//     overrides work now
-//     made DAO classes to sort and make easy changes to the code
-//TODO:while on login scene inputting wrong login credential will get errors
 //TODO:finish loginTeacher.fxml
-
+//TODO:weird visual bug where a duplicate screen opens after logging in and pressing close
+//student is now in its beta form might add more features to it
+//fixed minor issues
 public class Main extends Application {
     public static void main(String[] args) {
         new Startup();

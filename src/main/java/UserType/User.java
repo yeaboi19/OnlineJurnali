@@ -18,6 +18,10 @@ public class User {
 
     public User(String name, String lastName, String email) {
         User user = UserDAO.get(name,lastName,email);
+        if (user == null){
+            this.id = -1;
+            return;
+        }
         this.id = user.getId();
         this.name = user.getName();
         this.lastName = user.getLastName();

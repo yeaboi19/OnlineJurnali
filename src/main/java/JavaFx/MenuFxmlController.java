@@ -92,6 +92,18 @@ public class MenuFxmlController implements Initializable {
 
     @FXML
     public void onClosePressed() {
+        try {
+            Stage stage = (Stage) back.getScene().getWindow();
+            Parent parent = FXMLLoader.load(getClass().getResource("/menu.fxml"));
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void exit(){
         Platform.exit();
     }
 }
