@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="442.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginSceneStudentController">
+<AnchorPane prefHeight="442.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginSceneStudentController">
    <children>
-      <Label fx:id="welcomeLabel" layoutX="157.0" layoutY="14.0" prefHeight="46.0" prefWidth="556.0" text="Welcome back name username" textFill="#51bd64">
-         <font>
-            <Font name="Calibri Italic" size="26.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tableGrade" layoutX="14.0" layoutY="196.0" prefHeight="114.0" prefWidth="656.0" />
-       <ChoiceBox id="subject" fx:id="subjectid" layoutX="14.0" layoutY="60.0" prefHeight="25.0" prefWidth="149.0" value="Subject">
-           <items>
-               <FXCollections fx:factory="observableArrayList">
-                   <String fx:value="Georgian" />
-                   <String fx:value="History" />
-                   <String fx:value="Math" />
-                   <String fx:value="Physics" />
-                   <String fx:value="Biology" />
-                   <String fx:value="Chemistry" />
-                   <String fx:value="Geography" />
-                   <String fx:value="English" />
-                   <String fx:value="Russian" />
-               </FXCollections>
-           </items>
-       </ChoiceBox>
-      <Button fx:id="back" layoutX="584.0" layoutY="400.0" mnemonicParsing="false" onAction="#onClosePressed" prefHeight="25.0" prefWidth="85.0" text="Close">
+      <TableView fx:id="tableGrade" layoutX="10.0" layoutY="82.0" prefHeight="263.0" prefWidth="751.0">
+         <columns>
+            <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="georgian" prefWidth="75.0" text="Georgian" />
+            <TableColumn fx:id="history" prefWidth="75.0" text="History" />
+            <TableColumn fx:id="math" prefWidth="75.0" text="Math" />
+            <TableColumn fx:id="physics" prefWidth="75.0" text="Physics" />
+            <TableColumn fx:id="biology" prefWidth="75.0" text="Biology" />
+            <TableColumn fx:id="chemistry" prefWidth="75.0" text="Chemistry" />
+            <TableColumn fx:id="geography" prefWidth="75.0" text="Geography" />
+            <TableColumn fx:id="english" prefWidth="75.0" text="English" />
+            <TableColumn fx:id="russian" prefWidth="75.0" text="Russian" />
+         </columns></TableView>
+      <Button fx:id="back" layoutX="661.0" layoutY="400.0" mnemonicParsing="false" onAction="#onClosePressed" prefHeight="25.0" prefWidth="85.0" text="Close">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font></Button>
+      <Label fx:id="Name" layoutX="14.0" layoutY="15.0" prefHeight="27.0" prefWidth="149.0" text="Name:">
+         <font>
+            <Font name="Calibri" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="Surname" layoutX="14.0" layoutY="41.0" prefHeight="27.0" prefWidth="149.0" text="Surname:">
+         <font>
+            <Font name="Calibri" size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
