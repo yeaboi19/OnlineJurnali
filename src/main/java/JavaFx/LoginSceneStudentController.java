@@ -2,17 +2,22 @@ package JavaFx;
 
 import UserType.GradesInfo;
 import SQLConnections.DataConnect;
+import UserType.GradesInfoLite;
 import UserType.User;
-import javafx.application.Platform;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,44 +31,53 @@ import java.util.ResourceBundle;
 
 public class LoginSceneStudentController implements Initializable {
     public static User user;
-
-    @FXML
-    private Label welcomeLabel;
     @FXML
     private TableView tableGrade;
     @FXML
-    private ChoiceBox subjectid;
+    private TableColumn date;
+    @FXML
+    private TableColumn georgian;
+    @FXML
+    private TableColumn history;
+    @FXML
+    private TableColumn math;
+    @FXML
+    private TableColumn physics;
+    @FXML
+    private TableColumn biology;
+    @FXML
+    private TableColumn chemistry;
+    @FXML
+    private TableColumn geography;
+    @FXML
+    private TableColumn english;
+    @FXML
+    private TableColumn russian;
     @FXML
     private Button back;
+    @FXML
+    private Label Name;
+    @FXML
+    private Label Surname;
+    private ObservableList<GradesInfoLite> obList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        welcomeLabel.setText("Welcome back %s %s".formatted(user.getName(), user.getLastName()));
-        subjectid.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                tableGrade.getColumns().clear();
-                tableGrade.getItems().clear();
-                tableGrade.setPlaceholder(new Label("No grades to display"));
-                String subject = String.valueOf(subjectid.getSelectionModel().getSelectedItem());
-                List<GradesInfo> gradesInfo = null;
-                try {
-                    gradesInfo = getUserData();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                List<TableColumn> listOfColumns = new ArrayList<>();
-                for (GradesInfo iterator : gradesInfo) {
-                    TableColumn column = new TableColumn(iterator.getDate());
-                    column.setMinWidth(80);
-                    listOfColumns.add(column);
-                    //need to somehow write iterator.getSubject(subject) in this column
-                }
-
-                tableGrade.getColumns().addAll(listOfColumns);
-                tableGrade.refresh();
-            }
-        });
+        tableGrade.setEditable(true);
+        Name.setText("Name:" + user.getName());
+        Surname.setText("Surname:" + user.getLastName());
+        List<GradesInfo> gradesInfos = null;
+        try {
+            gradesInfos = getUserData();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        for (GradesInfo gradesInfo : gradesInfos){
+           obList.add(new GradesInfoLite(gradesInfo.getDate(), gradesInfo.getGeorgian(), gradesInfo.getHistory(), gradesInfo.getMath(), gradesInfo.getPhysics(), gradesInfo.getBiology(), gradesInfo.getChemistry(), gradesInfo.getGeography(), gradesInfo.getEnglish(), gradesInfo.getRussian()));
+        }
+        setCells();
+        tableGrade.setItems(obList);
+        tableGrade.refresh();
     }
 
     private List<GradesInfo> getUserData() throws SQLException {
@@ -73,7 +87,7 @@ public class LoginSceneStudentController implements Initializable {
         List<GradesInfo> gradesInfo = new ArrayList<>();
         GradesInfo temp = null;
         while (set.next()) {
-            temp = new GradesInfo(user.getId(),set.getInt("Georgian"), set.getInt("History"), set.getInt("Math"), set.getInt("Physics"), set.getInt("Biology"), set.getInt("Chemistry"), set.getInt("Geography"), set.getInt("English"), set.getInt("Russian"), set.getString("Date"));
+            temp = new GradesInfo(user.getId(), set.getInt("Georgian"), set.getInt("History"), set.getInt("Math"), set.getInt("Physics"), set.getInt("Biology"), set.getInt("Chemistry"), set.getInt("Geography"), set.getInt("English"), set.getInt("Russian"), set.getString("Date"));
             gradesInfo.add(temp);
         }
         return gradesInfo;
@@ -90,6 +104,18 @@ public class LoginSceneStudentController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void setCells(){
+        date.setCellValueFactory(new PropertyValueFactory<GradesInfo,String>("date"));
+        georgian.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("georgian"));
+        history.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("history"));
+        math.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("math"));
+        physics.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("physics"));
+        biology.setCellValueFactory(new PropertyValueFactory<GradesInfo,Initializable>("biology"));
+        chemistry.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("chemistry"));
+        geography.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("geography"));
+        english.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("english"));
+        russian.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("russian"));
     }
   /*onChoiceBoxSelect (just my note for me)
           get choice
