@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,6 +23,8 @@ public class LoginFxmlController {
     public TextField surnameid;
     @FXML
     public TextField emailid;
+    @FXML
+    public Label errorlable;
     @FXML
     public Button back;
 
@@ -43,7 +46,11 @@ public class LoginFxmlController {
     public void onLoginPressed() {
         try {
             User user = new User(nameid.getText(), surnameid.getText(), emailid.getText());
-
+            if (user.getId() == -1){
+                errorlable.setVisible(true);
+                return;
+            }
+            errorlable.setVisible(false);
             FXMLLoader fxmlLoader = null;
             if (user.isStudent()) {
                 LoginSceneStudentController.user = user;
