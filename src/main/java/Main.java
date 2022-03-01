@@ -9,6 +9,13 @@ import javafx.stage.Stage;
 //DONE:weird visual bug where a duplicate screen opens after logging in and pressing close
 //student is now in its beta form might add more features to it
 //fixed minor issues
+
+/*
+
+cumcumcumcumcumcumcumcumc
+
+ */
+
 public class Main extends Application {
     public static void main(String[] args) {
         new Startup();
