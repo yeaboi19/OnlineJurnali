@@ -2,7 +2,6 @@ package JavaFx;
 
 import SQL_DAO.UserDAO;
 import UserType.User;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

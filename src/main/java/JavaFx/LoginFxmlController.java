@@ -1,7 +1,6 @@
 package JavaFx;
 
 import UserType.User;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,9 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -25,6 +22,8 @@ public class LoginFxmlController {
     public TextField emailid;
     @FXML
     public Label errorlable;
+    @FXML
+    public Button login;
     @FXML
     public Button back;
 
@@ -51,17 +50,16 @@ public class LoginFxmlController {
                 return;
             }
             errorlable.setVisible(false);
-            FXMLLoader fxmlLoader = null;
+            Stage stage = (Stage) login.getScene().getWindow();
+            Parent parent = null;
             if (user.isStudent()) {
                 LoginSceneStudentController.user = user;
-                fxmlLoader = new FXMLLoader(getClass().getResource("/loginSceneStudent.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("/loginSceneStudent.fxml"));
+            }else{
+                parent = FXMLLoader.load(getClass().getResource("/loginTeacher.fxml"));
             }
-            Parent root1 = null;
-            root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("ABC");
-            stage.setScene(new Scene(root1));
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

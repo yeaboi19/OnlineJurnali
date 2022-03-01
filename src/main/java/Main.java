@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 //TODO:finish loginTeacher.fxml
-//TODO:weird visual bug where a duplicate screen opens after logging in and pressing close
+//DONE:weird visual bug where a duplicate screen opens after logging in and pressing close
 //student is now in its beta form might add more features to it
 //fixed minor issues
 public class Main extends Application {
