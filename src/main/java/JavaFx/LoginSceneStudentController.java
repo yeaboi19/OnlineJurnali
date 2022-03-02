@@ -101,6 +101,7 @@ public class LoginSceneStudentController implements Initializable {
             e.printStackTrace();
         }
     }
+
     private void setCells(){
         date.setCellValueFactory(new PropertyValueFactory<GradesInfo,String>("date"));
         georgian.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("georgian"));
@@ -113,10 +114,6 @@ public class LoginSceneStudentController implements Initializable {
         english.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("english"));
         russian.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("russian"));
     }
-  /*onChoiceBoxSelect (just my note for me)
-          get choice
-          loop through gradesInfo add a column with date and under that column add a grade. should be easy
-          nigger
-   */
+
 
 }
