@@ -1,100 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginTeacherFxmlController">
-   <children>
-      <HBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox prefHeight="400.0" prefWidth="254.0">
-               <children>
-                  <HBox prefHeight="85.0" prefWidth="296.0">
-                     <children>
-                        <Label text="&lt;Insert subject here&gt;">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
-                     </children></HBox>
-                  <HBox prefHeight="330.0" prefWidth="296.0">
-                     <children>
-                        <TableView prefHeight="323.0" prefWidth="299.0">
-                           <columns>
-                              <TableColumn prefWidth="75.0" text="Name" />
-                              <TableColumn minWidth="9.0" prefWidth="79.0" text="Lastname" />
-                              <TableColumn prefWidth="89.0" text="Email" />
-                           </columns>
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                        </TableView>
-                     </children></HBox>
-               </children></VBox>
-            <VBox prefHeight="400.0" prefWidth="346.0">
-               <children>
-                  <HBox prefHeight="211.0" prefWidth="304.0">
-                     <children>
-                        <VBox prefHeight="203.0" prefWidth="242.0">
-                           <children>
-                              <Label text="Name">
-                                 <VBox.margin>
-                                    <Insets left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <Label text="Surname">
-                                 <VBox.margin>
-                                    <Insets left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <Label layoutX="10.0" layoutY="52.0" text="Email">
-                                 <VBox.margin>
-                                    <Insets left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField layoutX="10.0" layoutY="69.0">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label rotate="46.3" text="grade">
-                                 <VBox.margin>
-                                    <Insets left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField rotate="97.6">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </TextField>
-                           </children>
-                        </VBox>
-                     </children></HBox>
-                  <HBox prefHeight="205.0" prefWidth="304.0">
-                     <children>
-                        <Button mnemonicParsing="false" text="Button" />
-                     </children></HBox>
-               </children></VBox>
-         </children>
-      </HBox>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.LoginTeacherFxmlController">
+    <children>
+        <TableView fx:id="tableView" editable="true" prefHeight="251.0" prefWidth="606.0">
+            <columns>
+                <TableColumn fx:id="tableEmail" prefWidth="147.33333837985992" text="Email" />
+                <TableColumn fx:id="tableName" prefWidth="82.66665649414062" text="Name" />
+                <TableColumn fx:id="tableSurname" prefWidth="74.66664123535156" text="Surname" />
+                <TableColumn fx:id="tableGrade" minWidth="0.0" prefWidth="60.66668701171875" text="Grade" />
+                <TableColumn fx:id="tableDate" prefWidth="93.33331298828125" text="Date" />
+            </columns>
+            <effect>
+                <ColorAdjust contrast="-0.14" hue="1.0" saturation="-1.0" />
+            </effect>
+        </TableView>
+        <Button fx:id="filter" layoutX="14.0" layoutY="306.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="83.0" text="Filters">
+            <font>
+                <Font name="Verdana Italic" size="15.0" />
+            </font>
+        </Button>
+        <Label layoutX="18.0" layoutY="261.0" prefHeight="17.0" prefWidth="123.0" text="Utilities:">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </Label>
+        <Button fx:id="addGrade" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="97.0" text="AddGrade">
+            <font>
+                <Font name="System Italic" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="editGrade" layoutX="14.0" layoutY="395.0" mnemonicParsing="false" onAction="#onEditPressed" text="EditGrade">
+            <font>
+                <Font name="System Italic" size="15.0" />
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

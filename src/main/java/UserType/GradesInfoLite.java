@@ -3,7 +3,7 @@ package UserType;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class GradesInfoLite {
+public final class GradesInfoLite {
     private final SimpleStringProperty date;
     private final SimpleIntegerProperty georgian;
     private final SimpleIntegerProperty history;

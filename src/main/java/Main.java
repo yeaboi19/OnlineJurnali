@@ -5,16 +5,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-//TODO:finish loginTeacher.fxml
-//DONE:weird visual bug where a duplicate screen opens after logging in and pressing close
-//student is now in its beta form might add more features to it
-//fixed minor issues
-
+//loginTeacher has a functioning table
+//TODO:onEditPressedinUtil must refresh a table otherwise its working
+//TODO:finish other two buttons
 /*
 
 cumcumcumcumcumcumcumcumc
 
- */
+*/
 
 public class Main extends Application {
     public static void main(String[] args) {

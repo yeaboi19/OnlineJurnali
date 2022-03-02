@@ -54,8 +54,9 @@ public class LoginFxmlController {
             Parent parent = null;
             if (user.isStudent()) {
                 LoginSceneStudentController.user = user;
-                parent = FXMLLoader.load(getClass().getResource("/loginSceneStudent.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("/loginStudent.fxml"));
             }else{
+                LoginTeacherFxmlController.user = user;
                 parent = FXMLLoader.load(getClass().getResource("/loginTeacher.fxml"));
             }
             Scene scene = new Scene(parent);

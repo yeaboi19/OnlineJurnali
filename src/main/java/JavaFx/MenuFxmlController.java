@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 // FIXME: 2/15/2022
 
-public class MenuFxmlController implements Initializable {
+public class MenuFxmlController{
     @FXML
     Button login;
     @FXML
@@ -27,11 +27,6 @@ public class MenuFxmlController implements Initializable {
     Button back;
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // sugma kok?
-        // kok sugma?
-    }
 
     @FXML
     public void onRegisterPressed() throws IOException {
@@ -63,7 +58,7 @@ public class MenuFxmlController implements Initializable {
     public void onTeacherPressed() throws IOException {
         try {
             Stage stage = (Stage) teacher.getScene().getWindow();
-            Parent parent = FXMLLoader.load(getClass().getResource("/register.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/registerTeacher.fxml"));
             Scene scene = new Scene(parent);
             stage.setScene(scene);
             stage.show();
