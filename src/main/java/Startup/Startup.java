@@ -22,7 +22,7 @@ public class Startup {
             PreparedStatement p = con.prepareStatement("use skola");
             p.execute();
             if (!tableCheck("grades")) {
-                p = con.prepareStatement("CREATE TABLE `skola`.`grades` (`PK` INT NOT NULL,`UserID` INT NOT NULL,`Georgian` INT NULL,`History` INT NULL,`Math` INT NULL,`Physics` INT NULL,`Biology` INT NULL,`Chemistry` INT NULL,`Geography` INT NULL,`English` INT NULL,`Russian` INT NULL,`Date` VARCHAR(45) NULL,PRIMARY KEY (`PK`));");
+                p = con.prepareStatement("CREATE TABLE `skola`.`grades` (`PK` INT NOT NULL,`UserID` INT NOT NULL,`Georgian` INT NULL,`History` INT NULL,`Math` INT NULL,`Physics` INT NULL,`Biology` INT NULL,`Chemistry` INT NULL,`Geography` INT NULL,`English` INT NULL,`Russian` INT NULL,`Date` VARCHAR(45) NULL,`Class` VARCHAR(45) NULL,PRIMARY KEY (`PK`));");
                 p.execute();
                 System.out.println("DEBUG: created Table 'GRADES'");
             }
@@ -36,7 +36,7 @@ public class Startup {
                 p.execute();
                 System.out.println("DEBUG: created Table 'CLASS'");
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
