@@ -5,6 +5,8 @@ import UserType.TeacherTableView;
 import UserType.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,12 +52,18 @@ public class LoginTeacherFxmlController implements Initializable {
     @FXML
     private Button editGrade;
     @FXML
+    private Button refresh;
+    @FXML
     private TableView tableView;
 
+    private URL url;
+    private ResourceBundle resourceBundle;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.url = url;
+        this.resourceBundle = resourceBundle;
         ObservableList<TeacherTableView> obList = FXCollections.observableArrayList();
         try {
             for (TeacherTableView v : getStudentData()) {
@@ -66,7 +74,11 @@ public class LoginTeacherFxmlController implements Initializable {
         }
         setCells();
         tableView.setItems(obList);
-        tableView.refresh();
+
+    }
+
+    protected void updateTable() {
+        initialize(url, resourceBundle);
     }
 
     private ArrayList<TeacherTableView> getStudentData() throws SQLException {
@@ -74,21 +86,22 @@ public class LoginTeacherFxmlController implements Initializable {
         Connection con = DataConnect.getConnection();
         PreparedStatement statement1 = con.prepareStatement("select * from skola.user where Class = \"%s\" and isStudent = true".formatted(user.getClass1()));
         ResultSet getUser = statement1.executeQuery();
-        ObservableList<TeacherTableView> obList = FXCollections.observableArrayList();
         while (getUser.next()) {
             name = getUser.getString("Name");
             surname = getUser.getString("Lastname");
             email = getUser.getString("Email");
             PreparedStatement getThis = con.prepareStatement("select %s,Date from skola.grades where UserID = \"%s\"".formatted(user.getSubject(), getUser.getString("UserID")));
             ResultSet temp = getThis.executeQuery();
+
             while (temp.next()) {
                 date = temp.getString("Date");
                 grade = temp.getInt("%s".formatted(user.getSubject()));
+                arrList.add(new TeacherTableView(email, name, surname, grade, date));
             }
-            arrList.add(new TeacherTableView(email, name, surname, grade, date));
         }
         return arrList;
     }
+
     public void onEditPressed() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/editGradeTeacher.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
@@ -97,6 +110,18 @@ public class LoginTeacherFxmlController implements Initializable {
         stage.setTitle("ABC");
         stage.setScene(new Scene(root1));
         stage.show();
+        EditGradeTeacherController.classPass = this;
+    }
+
+    public void onAddPressed() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/addGradeTeacher.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("ABC");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        addGradeTeacherController.classPass = this;
 
     }
 
