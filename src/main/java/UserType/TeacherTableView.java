@@ -59,4 +59,15 @@ public final class TeacherTableView {
     public SimpleStringProperty dateProperty() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return "TeacherTableView{" +
+                "email=" + email +
+                ", name=" + name +
+                ", surname=" + surname +
+                ", grade=" + grade +
+                ", date=" + date +
+                '}';
+    }
 }

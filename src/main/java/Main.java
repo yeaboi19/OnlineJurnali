@@ -6,8 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 //loginTeacher has a functioning table
-//TODO:onEditPressedinUtil must refresh a table otherwise its working
-//TODO:finish other two buttons
+//done now they automatically refresh
+//TODO:finish other filter buttons
 /*
 
 cumcumcumcumcumcumcumcumc

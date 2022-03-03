@@ -17,16 +17,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EditGradeTeacherController {
+public final class EditGradeTeacherController {
     @FXML
     private TextField editEmail;
     @FXML
     private TextField editDate;
     @FXML
     private TextField editGradeText;
-    @FXML
-    private Button editButton;
 
+    protected static LoginTeacherFxmlController classPass;
+
+
+    public EditGradeTeacherController() {
+    }
 
     public void onEditPressedInUtil() throws SQLException {
         String date = editDate.getText();
@@ -41,7 +44,7 @@ public class EditGradeTeacherController {
         }
         statement = con.prepareStatement("update skola.grades set %s = \"%d\" where UserID = \"%d\" and Date = \"%s\"".formatted(LoginTeacherFxmlController.user.getSubject(), grade, id, date));
         statement.execute();
-
+        classPass.updateTable();
 
     }
 }
