@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -55,22 +56,30 @@ public class LoginTeacherFxmlController implements Initializable {
     private Button refresh;
     @FXML
     private TableView tableView;
-
+    @FXML
+    private CheckBox filterSwitch;
     private URL url;
     private ResourceBundle resourceBundle;
-
+    private boolean isFiltered;
+    private ArrayList<TeacherTableView> filteredList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.url = url;
         this.resourceBundle = resourceBundle;
         ObservableList<TeacherTableView> obList = FXCollections.observableArrayList();
-        try {
-            for (TeacherTableView v : getStudentData()) {
-                obList.add(v);
+        ArrayList<TeacherTableView> listToLoop = new ArrayList<>();
+        if (!isFiltered) {
+            try {
+                listToLoop = getStudentData();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } else {
+            listToLoop = filteredList;
+        }
+        for (TeacherTableView v : listToLoop) {
+            obList.add(v);
         }
         setCells();
         tableView.setItems(obList);
@@ -81,7 +90,7 @@ public class LoginTeacherFxmlController implements Initializable {
         initialize(url, resourceBundle);
     }
 
-    private ArrayList<TeacherTableView> getStudentData() throws SQLException {
+    protected ArrayList<TeacherTableView> getStudentData() throws SQLException {
         ArrayList<TeacherTableView> arrList = new ArrayList<>();
         Connection con = DataConnect.getConnection();
         PreparedStatement statement1 = con.prepareStatement("select * from skola.user where Class = \"%s\" and isStudent = true".formatted(user.getClass1()));
@@ -123,6 +132,30 @@ public class LoginTeacherFxmlController implements Initializable {
         stage.show();
         addGradeTeacherController.classPass = this;
 
+    }
+
+    public void onFilterPressed() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/filterGradeTeacher.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("ABC");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+    public void onFilterPressedInUtil() throws SQLException {
+        if (filterSwitch.isSelected()) {
+            isFiltered = true;
+            filterGradeTeacherController.classPass = this;
+            filteredList = filterGradeTeacherController.filterTable();
+        } else {
+            isFiltered = false;
+            //two lines below me will reset the filter might use this later
+//            filterGradeTeacherController.emailFlag = false;
+//            filterGradeTeacherController.dateFlag = false;
+        }
+        initialize(url, resourceBundle);
     }
 
 
