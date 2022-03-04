@@ -28,8 +28,7 @@ public final class EditGradeTeacherController {
     protected static LoginTeacherFxmlController classPass;
 
 
-    public EditGradeTeacherController() {
-    }
+
 
     public void onEditPressedInUtil() throws SQLException {
         String date = editDate.getText();

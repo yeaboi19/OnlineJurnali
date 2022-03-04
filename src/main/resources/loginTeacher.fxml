@@ -19,7 +19,7 @@
                 <ColorAdjust contrast="-0.14" hue="1.0" saturation="-1.0" />
             </effect>
         </TableView>
-        <Button fx:id="filter" layoutX="14.0" layoutY="306.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="83.0" text="Filters">
+        <Button fx:id="filter" layoutX="14.0" layoutY="306.0" mnemonicParsing="false" onAction="#onFilterPressed" prefHeight="29.0" prefWidth="83.0" text="Filters">
             <font>
                 <Font name="Verdana Italic" size="15.0" />
             </font>
@@ -39,5 +39,10 @@
                 <Font name="System Italic" size="15.0" />
             </font>
         </Button>
+      <CheckBox fx:id="filterSwitch" layoutX="111.0" layoutY="312.0" mnemonicParsing="false" onAction="#onFilterPressedInUtil" prefHeight="21.0" prefWidth="140.0" text="ActivateFilters">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </CheckBox>
     </children>
 </AnchorPane>

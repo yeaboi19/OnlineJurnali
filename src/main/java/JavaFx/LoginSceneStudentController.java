@@ -102,6 +102,7 @@ public class LoginSceneStudentController implements Initializable {
         }
     }
 
+
     private void setCells(){
         date.setCellValueFactory(new PropertyValueFactory<GradesInfo,String>("date"));
         georgian.setCellValueFactory(new PropertyValueFactory<GradesInfo,Integer>("georgian"));

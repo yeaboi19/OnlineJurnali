@@ -2,7 +2,9 @@ package JavaFx;
 
 import SQLConnections.DataConnect;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -35,5 +37,6 @@ public final class addGradeTeacherController {
         statement.setString(4,LoginTeacherFxmlController.user.getClass1());
         statement.execute();
         classPass.updateTable();
+
     }
 }
