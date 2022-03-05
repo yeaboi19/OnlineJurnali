@@ -60,6 +60,26 @@ public final class TeacherTableView {
         return date;
     }
 
+    public void setEmail(String email) {
+        this.email.set(email);
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    public void setSurname(String surname) {
+        this.surname.set(surname);
+    }
+
+    public void setGrade(int grade) {
+        this.grade.set(grade);
+    }
+
+    public void setDate(String date) {
+        this.date.set(date);
+    }
+
     @Override
     public String toString() {
         return "TeacherTableView{" +

@@ -28,6 +28,7 @@ public class Main extends Application {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
         stage.setTitle("ABC");
         stage.setScene(new Scene(root1));
         stage.show();

@@ -62,6 +62,8 @@ public class LoginTeacherFxmlController implements Initializable {
     private ResourceBundle resourceBundle;
     private boolean isFiltered;
     private ArrayList<TeacherTableView> filteredList = new ArrayList<>();
+    @FXML
+    private Button Back;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -116,6 +118,7 @@ public class LoginTeacherFxmlController implements Initializable {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
         stage.setTitle("ABC");
         stage.setScene(new Scene(root1));
         stage.show();
@@ -127,6 +130,7 @@ public class LoginTeacherFxmlController implements Initializable {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
         stage.setTitle("ABC");
         stage.setScene(new Scene(root1));
         stage.show();
@@ -139,8 +143,17 @@ public class LoginTeacherFxmlController implements Initializable {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
         stage.setTitle("ABC");
         stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+    public void onBackPressed() throws IOException {
+        Stage stage = (Stage) Back.getScene().getWindow();
+        Parent parent = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
         stage.show();
     }
 
@@ -148,7 +161,7 @@ public class LoginTeacherFxmlController implements Initializable {
         if (filterSwitch.isSelected()) {
             isFiltered = true;
             filterGradeTeacherController.classPass = this;
-            filteredList = filterGradeTeacherController.filterTable();
+            filteredList = filterGradeTeacherController.filterTable(user.getId());
         } else {
             isFiltered = false;
             //two lines below me will reset the filter might use this later
