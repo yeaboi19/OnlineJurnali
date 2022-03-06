@@ -41,41 +41,23 @@ public class filterGradeTeacherController implements Initializable {
 
     protected static LoginTeacherFxmlController classPass;
 
-    public static int subjToInt(String subject) {
-        return switch (subject) {
-            case "Georgian" -> 3;
-            case "History" -> 4;
-            case "Math" -> 5;
-            case "Physics" -> 6;
-            case "Biology" -> 7;
-            case "Chemistry" -> 8;
-            case "English" -> 9;
-            case "Russian" -> 10;
-            default -> -1;
-        };
-    }
 
-    protected static ArrayList<TeacherTableView> filterTable(int userId) throws SQLException {
-        Connection con = DataConnect.getConnection();
+
+    protected ArrayList<TeacherTableView> filterTable() throws SQLException {
+        Boolean[] FLAGS = {dateFlag, emailFlag, nameFlag, surnameFlag}; // The priority follows from 0
+        String[] NAMES = {"date", "email", "name", "surname"};
+        String[] STRINGS = {dateString, emailString, nameString, surnameString};
+        //THESE 3 MUST BE SYNCED AT ALL TIMES ALSO THEY MUST GET INITIALIZED IN HERE SINCE JAVA HATES POINTERS
         ArrayList<TeacherTableView> arrList = classPass.getStudentData();
-        ArrayList<TeacherTableView> updatedList = new ArrayList<>();// name-1 last-2 email-3 grade-4 date-5
-        for (TeacherTableView v : arrList) {
-            if (dateFlag && emailFlag) {
-                if (v.getDate().equalsIgnoreCase(dateString) && v.getEmail().equalsIgnoreCase(emailString)) {
-                    updatedList.add(v);
-                }
-            } else if (dateFlag) {
-                if (v.getDate().equalsIgnoreCase(dateString)) {
-                    updatedList.add(v);
-                }
-            } else if (emailFlag) {
-                if (v.getEmail().equalsIgnoreCase(emailString)) {
-                    updatedList.add(v);
+        ArrayList<TeacherTableView> updatedList = new ArrayList<>();
+        int index = 0;
+        while (index != FLAGS.length) {
+            if (FLAGS[index]) {
+                for (TeacherTableView v : arrList) {
+                    if (v.getWhat(NAMES[index]).equalsIgnoreCase(STRINGS[index])) updatedList.add(v);
                 }
             }
-
-            // i want to play valorant
-
+            index++;
         }
         return updatedList;
     }
