@@ -12,8 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class filterGradeTeacherController implements Initializable {
     @FXML
@@ -43,13 +42,14 @@ public class filterGradeTeacherController implements Initializable {
 
 
 
-    protected ArrayList<TeacherTableView> filterTable() throws SQLException {
+    protected LinkedHashSet<TeacherTableView> filterTable() throws SQLException {
         Boolean[] FLAGS = {dateFlag, emailFlag, nameFlag, surnameFlag}; // The priority follows from 0
         String[] NAMES = {"date", "email", "name", "surname"};
         String[] STRINGS = {dateString, emailString, nameString, surnameString};
         //THESE 3 MUST BE SYNCED AT ALL TIMES ALSO THEY MUST GET INITIALIZED IN HERE SINCE JAVA HATES POINTERS
+
         ArrayList<TeacherTableView> arrList = classPass.getStudentData();
-        ArrayList<TeacherTableView> updatedList = new ArrayList<>();
+        LinkedHashSet<TeacherTableView>  updatedList = new LinkedHashSet<>();
         int index = 0;
         while (index != FLAGS.length) {
             if (FLAGS[index]) {
@@ -59,6 +59,7 @@ public class filterGradeTeacherController implements Initializable {
             }
             index++;
         }
+
         return updatedList;
     }
 

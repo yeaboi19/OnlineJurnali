@@ -27,6 +27,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.ResourceBundle;
 
 public class LoginTeacherFxmlController implements Initializable {
@@ -61,7 +62,7 @@ public class LoginTeacherFxmlController implements Initializable {
     private URL url;
     private ResourceBundle resourceBundle;
     private boolean isFiltered;
-    private ArrayList<TeacherTableView> filteredList = new ArrayList<>();
+    private LinkedHashSet<TeacherTableView> filteredList = new LinkedHashSet<>();
     @FXML
     private Button Back;
 
@@ -70,19 +71,21 @@ public class LoginTeacherFxmlController implements Initializable {
         this.url = url;
         this.resourceBundle = resourceBundle;
         ObservableList<TeacherTableView> obList = FXCollections.observableArrayList();
-        ArrayList<TeacherTableView> listToLoop = new ArrayList<>();
+
         if (!isFiltered) {
             try {
-                listToLoop = getStudentData();
+                for (TeacherTableView v : getStudentData()) {
+                    obList.add(v);
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         } else {
-            listToLoop = filteredList;
+            for (TeacherTableView v : filteredList) {
+                obList.add(v);
+            }
         }
-        for (TeacherTableView v : listToLoop) {
-            obList.add(v);
-        }
+
         setCells();
         tableView.setItems(obList);
 
