@@ -158,15 +158,13 @@ public class LoginTeacherFxmlController implements Initializable {
     }
 
     public void onFilterPressedInUtil() throws SQLException {
+        filterGradeTeacherController instance = new filterGradeTeacherController();
         if (filterSwitch.isSelected()) {
             isFiltered = true;
             filterGradeTeacherController.classPass = this;
-            filteredList = filterGradeTeacherController.filterTable(user.getId());
+            filteredList = instance.filterTable();
         } else {
             isFiltered = false;
-            //two lines below me will reset the filter might use this later
-//            filterGradeTeacherController.emailFlag = false;
-//            filterGradeTeacherController.dateFlag = false;
         }
         initialize(url, resourceBundle);
     }

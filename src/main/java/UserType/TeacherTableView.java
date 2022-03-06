@@ -18,7 +18,8 @@ public final class TeacherTableView {
         this.date = new SimpleStringProperty(date);
     }
 
-    public TeacherTableView() {}
+    public TeacherTableView() {
+    }
 
     public String getEmail() {
         return email.get();
@@ -60,24 +61,16 @@ public final class TeacherTableView {
         return date;
     }
 
-    public void setEmail(String email) {
-        this.email.set(email);
-    }
 
-    public void setName(String name) {
-        this.name.set(name);
-    }
 
-    public void setSurname(String surname) {
-        this.surname.set(surname);
-    }
-
-    public void setGrade(int grade) {
-        this.grade.set(grade);
-    }
-
-    public void setDate(String date) {
-        this.date.set(date);
+    public String getWhat(String name) {
+        return switch (name) {
+            case "date" -> getDate();
+            case "email" -> getEmail();
+            case "name" -> getName();
+            case "surname" -> getSurname();
+            default -> "-1";
+        };
     }
 
     @Override
