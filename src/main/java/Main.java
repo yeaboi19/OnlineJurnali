@@ -13,18 +13,17 @@ import javafx.stage.Stage;
 cumcumcumcumcumcumcumcumc
 
 */
-
+//TODO:ADD REMOVE AND ADD TO ADMIN WINDOW
 public class Main extends Application {
     public static void main(String[] args) {
 //        new Startup();
         launch(args);
 
     }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         new Startup();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("userControl.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menu.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
