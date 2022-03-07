@@ -16,7 +16,7 @@ cumcumcumcumcumcumcumcumc
 
 public class Main extends Application {
     public static void main(String[] args) {
-        new Startup();
+//        new Startup();
         launch(args);
 
     }
@@ -24,7 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         new Startup();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("userControl.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);

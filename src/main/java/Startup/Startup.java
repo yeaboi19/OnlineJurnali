@@ -6,10 +6,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Startup {
-    Scanner input = new Scanner(System.in);
-
-    DataConnect d = DataConnect.getInstance();
-    Connection con = DataConnect.getConnection();
+    private final Connection con = DataConnect.getConnection();
 
     boolean tableCheck(String tableName) throws SQLException {
         PreparedStatement p = con.prepareStatement("SHOW TABLES LIKE '" + tableName + "';");
@@ -30,11 +27,6 @@ public class Startup {
                 p = con.prepareStatement("CREATE TABLE `skola`.`user` (`UserID` INT NOT NULL AUTO_INCREMENT,`Name` VARCHAR(45) NOT NULL,`Lastname` VARCHAR(45) NOT NULL,`Email` VARCHAR(45) NOT NULL,`Class` VARCHAR(45) NOT NULL,`Subject` VARCHAR(45) NOT NULL,`isStudent` BOOLEAN NOT NULL,`isMale` BOOLEAN NOT NULL,PRIMARY KEY (`UserID`));");
                 p.execute();
                 System.out.println("DEBUG: created Table 'USER'");
-            }
-            if (!tableCheck("class")) {
-                p = con.prepareStatement("CREATE TABLE `skola`.`class` (`ClassId` INT NOT NULL AUTO_INCREMENT,`ClassUserId` INT NOT NULL,`ClassTeachId` INT NOT NULL,`ClassGrade` INT NOT NULL,PRIMARY KEY (`ClassId`));");
-                p.execute();
-                System.out.println("DEBUG: created Table 'CLASS'");
             }
         } catch (SQLException e) {
             e.printStackTrace();

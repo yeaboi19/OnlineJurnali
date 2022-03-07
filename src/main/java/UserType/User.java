@@ -9,7 +9,7 @@ public class User {
     private String name;
     private String lastName;
     private String email;
-    private String class1; //javas ukve class radganac aaqvs class1 davarqvi
+    private String class1; //javas ukve 'class' radganac aaqvs class1 davarqvi
     private String subject;
     private boolean isStudent;
     private boolean isMale;
