@@ -122,6 +122,22 @@ public class User {
         isMale = male;
     }
 
+    public boolean getIsStudent(){
+        return isStudent();
+    }
+
+    public void setIsStudent(boolean student){
+        setStudent(student);
+    }
+
+    public boolean getIsMale(){
+        return isMale();
+    }
+
+    public void setIsMale(boolean male){
+        setMale(male);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
