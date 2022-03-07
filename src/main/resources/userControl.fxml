@@ -10,17 +10,7 @@
 <AnchorPane prefHeight="518.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="JavaFx.UserControlController">
     <children>
-        <TableView fx:id="userTable" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="627.0">
-            <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="90.0" text="Name"/>
-                <TableColumn fx:id="lastColumn" prefWidth="92.0" text="Lastname"/>
-                <TableColumn fx:id="emailColumn" prefWidth="150.0" text="Email"/>
-                <TableColumn fx:id="classColumn" prefWidth="63.0" text="Class"/>
-                <TableColumn fx:id="subjectColumn" prefWidth="103.0" text="Subject"/>
-                <TableColumn fx:id="isStudentColumn" prefWidth="69.0" text="isStudent"/>
-                <TableColumn fx:id="isMaleColumn" prefWidth="58.0" text="isMale"/>
-            </columns>
-        </TableView>
+        <TableView fx:id="userTable" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="627.0"/>
         <Label layoutX="136.0" layoutY="288.0" text="Lastnam,e"/>
         <Label layoutX="49.0" layoutY="288.0" text="name"/>
         <Label layoutX="250.0" layoutY="288.0" text="email"/>

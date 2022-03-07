@@ -34,7 +34,7 @@ public class UserDAO {
             ps.setString(5, user.getSubject());
             ps.setBoolean(6, user.isStudent());
             ps.setBoolean(7, user.isMale());
-            ps.execute();
+            ps.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -90,23 +90,40 @@ public class UserDAO {
     public static boolean remove(User user) {
         try {
             PreparedStatement pr = con.prepareStatement("DELETE FROM skola.user WHERE Email='" + user.getEmail() + "'");
-            return pr.execute();
+            return pr.executeUpdate() != 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    public static int edit(User oldUser, User newUser) { // tu oldUser databaseshi araa newUsers sheqmnis (its a feature not a bug)
-        if (!add(newUser)) {
-            System.out.println("cant edit,changed user already exists");
-            return 1;
-        } else if (!remove(oldUser)) {
-            System.out.println("cant edit,there is no old user");
-            return 2;
-        } else {
-            System.out.println("edit has been made");
-            return 0;
+    public static boolean edit(User oldUser, User newUser) {
+        try{
+            String statement="UPDATE skola.user set Name='"+newUser.getName()+"',Lastname='"+newUser.getLastName()+"',Email='"+newUser.getEmail()+"',Class='"+newUser.getClass1()+"',Subject='"+newUser.getSubject()+"',isStudent="+newUser.isStudent()+",isMale="+newUser.isMale()+" WHERE Name='"+oldUser.getName()+"' AND Lastname='"+oldUser.getLastName()+"' AND Email='"+oldUser.getEmail()+"' AND Class='"+oldUser.getClass1()+"' AND Subject='"+oldUser.getSubject()+"' AND isStudent="+oldUser.isStudent()+" AND isMale="+oldUser.isMale();
+            System.out.println(statement);
+            PreparedStatement pr = con.prepareStatement(/*"UPDATE skola.user set Name=?,Lastname=?,Email=?,Class=?,Subject=?,isStudent=?,isMale=? WHERE Name=? AND Lastname=? AND Email=? AND Class=? AND Subject=? AND isStudent=? AND isMale=?"*/statement);
+//            pr.setString(1,oldUser.getName());
+//            pr.setString(2,oldUser.getLastName());
+//            pr.setString(3, oldUser.getEmail());
+//            pr.setString(4, oldUser.getClass1());
+//            pr.setString(5,oldUser.getSubject());
+//            pr.setBoolean(6,oldUser.isStudent());
+//            pr.setBoolean(7,oldUser.isMale());
+//
+//            pr.setString(8,newUser.getName());
+//            pr.setString(9,newUser.getLastName());
+//            pr.setString(10, newUser.getEmail());
+//            pr.setString(11, newUser.getClass1());
+//            pr.setString(12,newUser.getSubject());
+//            pr.setBoolean(12,newUser.isStudent());
+//            pr.setBoolean(13,newUser.isMale());
+            int ret = pr.executeUpdate(); //ulamazoa mara sheni dedac cocxali tavit ar aketebda
+            System.out.println(ret);
+            return ret != 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return false;
     }
 }

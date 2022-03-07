@@ -4,10 +4,12 @@ import SQL_DAO.UserDAO;
 import UserType.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,20 +19,6 @@ import java.util.ResourceBundle;
 public class UserControlController implements Initializable {
     @FXML
     private TableView userTable;
-    @FXML
-    private TableColumn nameColumn;
-    @FXML
-    private TableColumn lastColumn;
-    @FXML
-    private TableColumn emailColumn;
-    @FXML
-    private TableColumn classColumn;
-    @FXML
-    private TableColumn subjectColumn;
-    @FXML
-    private TableColumn isStudentColumn;
-    @FXML
-    private TableColumn isMaleColumn;
 
     @FXML
     private TextField nameField;
@@ -71,31 +59,65 @@ public class UserControlController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        TableColumn column1 = setUpColumn("name","name");
+        TableColumn column2 = setUpColumn("lastname","lastName");
+        TableColumn column3 = setUpColumn("email","email");
+        TableColumn column4 = setUpColumn("class","class1");
+        TableColumn column5 = setUpColumn("subject","subject");
+        TableColumn column6 = setUpColumn("isStudent","isStudent");
+        TableColumn column7 = setUpColumn("isMale","isMale");
+        userTable.getColumns().addAll(column1,column2,column3,column4,column5,column6,column7);
+        userTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (mouseEvent.getClickCount() == 2) {
+                    int index = userTable.getSelectionModel().getSelectedIndex();
+                    User user = (User) userTable.getItems().get(index);
+                    nameField.setText(user.getName());
+                    lastField.setText(user.getLastName());
+                    emailField.setText(user.getEmail());
+                    classField.setText(user.getClass1());
+                    subjectChoice.setValue(user.getSubject());
+                    isStudent.setSelected(user.isStudent());
+                    isMale.setSelected(user.isMale());
+                }
+            }
+        });
         updateTable();
     }
 
     protected void updateTable(){
         ObservableList<User> obList = FXCollections.observableArrayList();
-        ArrayList<User> temp = UserDAO.getAll();
-        for (User u :
-                temp) {
-            System.out.println(u);
-        }
-        obList.addAll(temp);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
-        lastColumn.setCellValueFactory(new PropertyValueFactory<User,String>("lastName"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
-        classColumn.setCellValueFactory(new PropertyValueFactory<User,String>("class1"));
-        subjectColumn.setCellValueFactory(new PropertyValueFactory<User,String>("subject"));
-        isStudentColumn.setCellValueFactory(new PropertyValueFactory<User,Boolean>("isStudent"));
-        isMaleColumn.setCellValueFactory(new PropertyValueFactory<User,Boolean>("isMale"));
+        obList.addAll(UserDAO.getAll());
+
+
         userTable.setItems(obList);
+        // FIXME: 07/03/2022 lol booleanebs ver kitxulobs ver gavige ratom ;-;
+    }
+
+    private TableColumn setUpColumn(String columnName, String idInUser) {
+        if(idInUser.charAt(0)=='i' && idInUser.charAt(1)=='s'){
+            TableColumn<User,Boolean> column = new TableColumn<>(columnName);
+            column.setCellValueFactory(new PropertyValueFactory<>(idInUser));
+            return column;
+        }else{
+            TableColumn<User,String> column = new TableColumn<>(columnName);
+            column.setCellValueFactory(new PropertyValueFactory<>(idInUser));
+            return column;
+        }
     }
 
     public void onClosePressed(){
 
     }
     public void onCommitPressed(){
+        User oldUser = textFieldToUser(nameField,lastField,emailField,classField,subjectChoice,isStudent,isMale);
+        User newUser = textFieldToUser(nameField1,lastField1,emailField1,classField1,subjectChoice1,isStudent1,isMale1);
+        UserDAO.edit(oldUser,newUser);
+        infoLabel.setText("Successfully edited");
         updateTable();
+    }
+    private User textFieldToUser(TextField name,TextField last,TextField email,TextField class1,ChoiceBox subject,CheckBox isStudent,CheckBox isMale){
+        return new User(0,name.getText(),last.getText(),email.getText(),class1.getText(),String.valueOf(subject.getSelectionModel().getSelectedItem()),isStudent.isSelected(),isMale.isSelected());
     }
 }
