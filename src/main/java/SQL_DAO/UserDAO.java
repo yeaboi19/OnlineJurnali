@@ -100,7 +100,7 @@ public class UserDAO {
     public static boolean edit(User oldUser, User newUser) {
         try{
             String statement="UPDATE skola.user set Name='"+newUser.getName()+"',Lastname='"+newUser.getLastName()+"',Email='"+newUser.getEmail()+"',Class='"+newUser.getClass1()+"',Subject='"+newUser.getSubject()+"',isStudent="+newUser.isStudent()+",isMale="+newUser.isMale()+" WHERE Name='"+oldUser.getName()+"' AND Lastname='"+oldUser.getLastName()+"' AND Email='"+oldUser.getEmail()+"' AND Class='"+oldUser.getClass1()+"' AND Subject='"+oldUser.getSubject()+"' AND isStudent="+oldUser.isStudent()+" AND isMale="+oldUser.isMale();
-            System.out.println(statement);
+//            System.out.println(statement);
             PreparedStatement pr = con.prepareStatement(/*"UPDATE skola.user set Name=?,Lastname=?,Email=?,Class=?,Subject=?,isStudent=?,isMale=? WHERE Name=? AND Lastname=? AND Email=? AND Class=? AND Subject=? AND isStudent=? AND isMale=?"*/statement);
 //            pr.setString(1,oldUser.getName());
 //            pr.setString(2,oldUser.getLastName());
@@ -117,8 +117,8 @@ public class UserDAO {
 //            pr.setString(12,newUser.getSubject());
 //            pr.setBoolean(12,newUser.isStudent());
 //            pr.setBoolean(13,newUser.isMale());
-            int ret = pr.executeUpdate(); //ulamazoa mara sheni dedac cocxali tavit ar aketebda
-            System.out.println(ret);
+            int ret = pr.executeUpdate(); //ulamazoa mara azrze ar var mag gzit rato ar mushaobda
+//            System.out.println(ret);
             return ret != 0;
 
         } catch (SQLException e) {

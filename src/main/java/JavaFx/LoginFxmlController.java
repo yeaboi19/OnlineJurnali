@@ -53,7 +53,7 @@ public class LoginFxmlController {
             Stage stage = (Stage) login.getScene().getWindow();
             Parent parent = null;
             if(user.getEmail().equalsIgnoreCase("ADMIN")){
-                parent = FXMLLoader.load(getClass().getResource("/userControl.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("/Admin/userEditControl.fxml"));
             }else if (user.isStudent()) {
                 LoginSceneStudentController.user = user;
                 parent = FXMLLoader.load(getClass().getResource("/loginStudent.fxml"));

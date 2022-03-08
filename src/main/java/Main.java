@@ -10,10 +10,15 @@ import javafx.stage.Stage;
 //TODO:finish other filter buttons
 /*
 
-cumcumcumcumcumcumcumcumc
+balls
 
 */
+
+//------------------------------------------
 //TODO:ADD REMOVE AND ADD TO ADMIN WINDOW
+//SEE UserDAO line 120
+//Vici ro axali fxml-ebi ertmanets gavs. dont care, didnt ask
+//------------------------------------------
 public class Main extends Application {
     public static void main(String[] args) {
 //        new Startup();
